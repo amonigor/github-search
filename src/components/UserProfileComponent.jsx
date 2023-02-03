@@ -41,14 +41,14 @@ export const UserProfileComponent = ({ user, showDetails }) => {
               <Text variant="body">{user.bio}</Text>
             </Blockquote>
           )}
+          <Text variant="subheading" style={{ marginTop: '10px' }}>
+            About this user...
+          </Text>
           {user.hirebale ? (
             <Badge backgroundColor="positive">Hirebale</Badge>
           ) : (
             <Badge backgroundColor="negative">Not hirebale</Badge>
           )}
-          <Text variant="subheading" style={{ marginTop: '10px' }}>
-            About this user...
-          </Text>
           {user.company && <Text variant="body">Work at {user.company}</Text>}
           {user.location && (
             <Text variant="body">Are located in {user.location}</Text>
