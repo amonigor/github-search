@@ -1,11 +1,7 @@
-import { Alert, Anchor, Avatar, Text } from '@itwin/itwinui-react';
+import { Anchor, Avatar, Text } from '@itwin/itwinui-react';
 
-export const UserProfileComponent = (props) => {
-  return !props.user ? (
-    <Alert type="warning" className="mt-2" style={{ marginTop: '10px' }}>
-      User not found
-    </Alert>
-  ) : (
+export const UserProfileComponent = ({ user }) => {
+  return (
     <div style={{ marginTop: '10px' }}>
       <div
         style={{
@@ -23,22 +19,19 @@ export const UserProfileComponent = (props) => {
         >
           <Avatar
             size="x-large"
-            image={
-              <img
-                src="https://avatars.githubusercontent.com/u/48227869?v=4"
-                alt="Igor Amon"
-              />
-            }
-            title="Igor Amon"
+            image={<img src={user.avatar_url} alt="Igor Amon" />}
+            title={user.name}
           />
           <div>
-            <Text variant="title" style={{ fontWeight: 'bold' }}>
-              Igor Amon
-            </Text>
-            <Text variant="small">@amonigor</Text>
+            {user.name && (
+              <Text variant="title" style={{ fontWeight: 'bold' }}>
+                {user.name}
+              </Text>
+            )}
+            <Text variant="small">@{user.login}</Text>
           </div>
         </div>
-        <Anchor href="https://www.example.com/">Access github page</Anchor>
+        <Anchor href={user.html_url}>Access github page</Anchor>
       </div>
     </div>
   );
