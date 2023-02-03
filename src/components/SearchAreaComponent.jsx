@@ -37,6 +37,7 @@ export const SerachAreaComponent = () => {
             label="Show repositories"
             value={showRepos}
             onChange={toggleRepos}
+            disabled
           />
         </InputGroup>
       </Fieldset>

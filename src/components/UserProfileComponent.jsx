@@ -1,6 +1,6 @@
-import { Anchor, Avatar, Text } from '@itwin/itwinui-react';
+import { Anchor, Avatar, Badge, Blockquote, Text } from '@itwin/itwinui-react';
 
-export const UserProfileComponent = ({ user }) => {
+export const UserProfileComponent = ({ user, showDetails }) => {
   return (
     <div style={{ marginTop: '10px' }}>
       <div
@@ -33,6 +33,29 @@ export const UserProfileComponent = ({ user }) => {
         </div>
         <Anchor href={user.html_url}>Access github page</Anchor>
       </div>
+
+      {showDetails && (
+        <>
+          {user.bio && (
+            <Blockquote footer={`- ${user.name || user.login}, about themself`}>
+              <Text variant="body">{user.bio}</Text>
+            </Blockquote>
+          )}
+          {user.hirebale ? (
+            <Badge backgroundColor="positive">Hirebale</Badge>
+          ) : (
+            <Badge backgroundColor="negative">Not hirebale</Badge>
+          )}
+          <Text variant="subheading" style={{ marginTop: '10px' }}>
+            About this user...
+          </Text>
+          {user.company && <Text variant="body">Work at {user.company}</Text>}
+          {user.location && (
+            <Text variant="body">Are located in {user.location}</Text>
+          )}
+          {user.blog && <Anchor href={user.blog}>Access site/blog</Anchor>}
+        </>
+      )}
     </div>
   );
 };
